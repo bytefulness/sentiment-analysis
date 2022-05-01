@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "theme";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -15,10 +16,16 @@ const GlobalStyle = createGlobalStyle`
     body{
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.5;
+    color: ${colors.grayPalette[900]};
     }
 
     ul{
         list-style: none;
+    }
+
+    a{
+        text-decoration: none;
+        color: inherit;
     }
 
 `;
