@@ -23,6 +23,10 @@ const StyledMenuLink = styled.a`
   &:hover {
     background-color: ${colors.grayPalette[50]};
   }
+
+  &:active {
+    background-color: ${colors.grayPalette[100]};
+  }
 `;
 
 const Icon = styled.span`
