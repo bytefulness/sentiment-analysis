@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 import { colors, radii, spaces } from "theme";
 
-const Button = ({ variant, fullWidth, children }) => {
+const Button = ({ className, variant, fullWidth, children }) => {
   return (
-    <StyledButton variant={variant} fullWidth={fullWidth}>
+    <StyledButton className={className} variant={variant} fullWidth={fullWidth}>
       {children}
     </StyledButton>
   );
