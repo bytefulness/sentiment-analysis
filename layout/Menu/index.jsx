@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { Avatar } from "components";
 import MenuLink from "./MenuLink";
 import { colors, spaces } from "theme";
 
@@ -16,14 +17,22 @@ const Menu = ({ menus }) => {
           />
         ))}
       </Navbar>
+      <Avatar className="avatar" image="/avatar.png" name="Erhan" isOnline />
     </StyledMenu>
   );
 };
 
 const StyledMenu = styled.aside`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-right: 1px solid ${colors.grayPalette[300]};
   padding: ${spaces[8]};
   min-height: 100vh;
+
+  .avatar {
+    margin: 0 auto;
+  }
 `;
 
 const Navbar = styled.nav`

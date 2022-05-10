@@ -15,13 +15,13 @@ const Layout = ({ children }) => {
 const Main = styled.main`
   display: grid;
   grid-template-columns: 300px 1fr;
-  gap: ${spaces[8]};
 `;
 
 const Content = styled.div`
-  padding-top: ${spaces[10]};
+  padding: ${spaces[10]};
   width: 100%;
   max-width: 1280px;
+  margin: 0 auto;
 `;
 
 export default Layout;
