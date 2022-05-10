@@ -39,33 +39,63 @@ export const typography = {
 
   // Body Tokens
   body: {
+    /**
+     * 3.75rem: 60px
+     */
     "6xl": {
       fontSize: "3.75rem",
     },
+    /**
+     * 3rem: 48px
+     */
     "5xl": {
       fontSize: "3rem",
     },
+    /**
+     * 2.25rem: 36px
+     */
     "4xl": {
       fontSize: "2.25rem",
     },
+    /**
+     * 1.875rem: 30px
+     */
     "3xl": {
       fontSize: "1.875rem",
     },
+    /**
+     * 1.5rem: 24px
+     */
     "2xl": {
       fontSize: "1.5rem",
     },
+    /**
+     * 1.25rem: 20px
+     */
     xl: {
       fontSize: "1.25rem",
     },
+    /**
+     * 1.125rem: 18px;
+     */
     lg: {
       fontSize: "1.125rem",
     },
+    /**
+     * 1rem: 16px
+     */
     md: {
       fontSize: "1rem",
     },
+    /**
+     * 0.875rem: 14px
+     */
     sm: {
       fontSize: "0.875rem",
     },
+    /**
+     * 0.75rem: 12px
+     */
     xs: {
       fontSize: "0.75rem",
     },
