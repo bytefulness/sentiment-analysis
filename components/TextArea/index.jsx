@@ -2,9 +2,14 @@ import styled from "styled-components";
 import PropTypes, { string } from "prop-types";
 import { colors, typography, spaces, radii } from "theme";
 
-const TextArea = ({ className, fullWidth, ...props }) => {
+const TextArea = ({ className, placeholder, fullWidth, ...props }) => {
   return (
-    <StyledTextArea className={className} fullWidth={fullWidth} {...props} />
+    <StyledTextArea
+      className={className}
+      placeholder={placeholder}
+      fullWidth={fullWidth}
+      {...props}
+    />
   );
 };
 
@@ -25,6 +30,9 @@ const StyledTextArea = styled.textarea`
 `;
 
 TextArea.propTypes = {
+  className: PropTypes.string,
+  /** Placeholder for textarea */
+  placeholder: PropTypes.string,
   /** Whether or not to make the input full width */
   fullWidth: PropTypes.bool,
 };

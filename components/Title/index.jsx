@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { typography } from "theme";
 
-const Title = ({ level, variant, children }) => {
+const Title = ({ className, level, variant, children }) => {
   const Tag = `h${level}`;
   return (
-    <StyledTitle as={Tag} level={level} variant={variant}>
+    <StyledTitle className={className} as={Tag} level={level} variant={variant}>
       {children}
     </StyledTitle>
   );

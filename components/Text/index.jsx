@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { typography } from "theme";
 
-const Text = ({ as, color, variant, children }) => {
+const Text = ({ className, as, color, variant, children }) => {
   const Tag = as;
   return (
-    <StyledText as={Tag} variant={variant} color={color}>
+    <StyledText className={className} as={Tag} variant={variant} color={color}>
       {children}
     </StyledText>
   );
