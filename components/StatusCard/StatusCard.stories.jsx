@@ -1,11 +1,17 @@
 import StatusCard from "./index";
+import styled from "styled-components";
 
 export default {
   title: "components/StatusCard",
   component: StatusCard,
 };
 
-const Template = (args) => <StatusCard {...args} />;
+const Template = (args) => <StyledStatusCard {...args} />;
+
+const StyledStatusCard = styled(StatusCard)`
+  width: 100%;
+  max-width: 380px;
+`;
 
 export const Default = Template.bind({});
 Default.args = {

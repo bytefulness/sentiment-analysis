@@ -28,8 +28,6 @@ const StyledStatusCard = styled.article`
   justify-content: center;
   align-items: center;
   gap: ${(props) => props.hasChart && spaces[10]};
-  width: 100%;
-  max-width: 370px;
   background-color: ${(props) => props.color};
   text-align: ${(props) => !props.hasChart && "center"};
   padding: ${spaces[12]} ${spaces[8]};
@@ -45,6 +43,7 @@ const Description = styled.p`
   font-size: ${typography.body.sm.fontSize};
   font-weight: 300;
   color: ${colors.grayPalette[500]};
+  margin-bottom: ${spaces[6]};
 `;
 
 const Value = styled.span`
