@@ -2,7 +2,15 @@ import { useState, useEffect } from "react";
 import Sentiment from "sentiment";
 import styled from "styled-components";
 import { textData } from "constant";
-import { Button, Empty, Text, TextArea, Title, StatusCard } from "components";
+import {
+  Button,
+  Empty,
+  Text,
+  TextArea,
+  Title,
+  StatusCard,
+  Word,
+} from "components";
 import { spaces } from "theme";
 
 const Dashboard = () => {
@@ -15,6 +23,11 @@ const Dashboard = () => {
   useEffect(() => {
     setSentiment(new Sentiment());
   }, []);
+
+  console.log(data);
+
+  const isPositiveWords = data?.positive.length > 0;
+  const isNegativeWords = data?.negative.length > 0;
 
   const handleAnalyze = () => {
     const result = sentiment.analyze(inputValue);
@@ -31,8 +44,6 @@ const Dashboard = () => {
     if (score > 0.5) return statusCards.sentiment.positive;
     return statusCards.sentiment.negative;
   };
-
-  console.log(data);
 
   return (
     <>
@@ -60,35 +71,67 @@ const Dashboard = () => {
         </ContentWrapper>
 
         {data ? (
-          <StatsWrapper>
-            <StatusCard
-              color="#FFEEE2"
-              title={statusCards.sentiment.title}
-              description={statusCards.sentiment.description}
-              value={checkPhareScore(data.score)}
-            />
+          <>
+            <StatsWrapper>
+              <StatusCard
+                color="#FFEEE2"
+                title={statusCards.sentiment.title}
+                description={statusCards.sentiment.description}
+                value={checkPhareScore(data.score)}
+              />
 
-            <StatusCard
-              color="#EEFCEF"
-              title={statusCards.score.title}
-              description={statusCards.score.description}
-              value={data.score}
-            />
+              <StatusCard
+                color="#EEFCEF"
+                title={statusCards.score.title}
+                description={statusCards.score.description}
+                value={data.score}
+              />
 
-            <StatusCard
-              color="#E6F5FA"
-              title={statusCards.positiveWords.title}
-              description={statusCards.positiveWords.description}
-              value={data.positive.length}
-            />
+              <StatusCard
+                color="#E6F5FA"
+                title={statusCards.positiveWords.title}
+                description={statusCards.positiveWords.description}
+                value={data.positive.length}
+              />
 
-            <StatusCard
-              color="#E6F5FA"
-              title={statusCards.negativeWords.title}
-              description={statusCards.negativeWords.description}
-              value={data.negative.length}
-            />
-          </StatsWrapper>
+              <StatusCard
+                color="#E6F5FA"
+                title={statusCards.negativeWords.title}
+                description={statusCards.negativeWords.description}
+                value={data.negative.length}
+              />
+            </StatsWrapper>
+
+            <WordsWrapper>
+              <StyledTitle level={2} variant="xl">
+                Positive Words
+              </StyledTitle>
+              <Words>
+                {isPositiveWords ? (
+                  data.positive.map((word, index) => (
+                    <Word key={`positiveWord${index}`} isPositive>
+                      {word}
+                    </Word>
+                  ))
+                ) : (
+                  <Text variant="sm">There is no positive words</Text>
+                )}
+              </Words>
+
+              <StyledTitle level={2} variant="xl">
+                Negative Words
+              </StyledTitle>
+              <Words>
+                {isNegativeWords ? (
+                  data.negative.map((word, index) => (
+                    <Word key={`negativeWord${index}`}>{word}</Word>
+                  ))
+                ) : (
+                  <Text variant="sm">There is no negative words</Text>
+                )}
+              </Words>
+            </WordsWrapper>
+          </>
         ) : (
           <Empty title={empty.title} description={empty.description} />
         )}
@@ -120,6 +163,21 @@ const StatsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   gap: ${spaces[6]};
+  margin-bottom: ${spaces[9]};
+`;
+
+const WordsWrapper = styled.div`
+  margin-bottom: ${spaces[20]};
+`;
+
+const StyledTitle = styled(Title)`
+  margin-bottom: ${spaces[6]};
+`;
+
+const Words = styled.div`
+  &:not(:last-child) {
+    margin-bottom: ${spaces[10]};
+  }
 `;
 
 export default Dashboard;
