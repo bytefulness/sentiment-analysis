@@ -24,8 +24,6 @@ const Dashboard = () => {
     setSentiment(new Sentiment());
   }, []);
 
-  console.log(data);
-
   const isPositiveWords = data?.positive.length > 0;
   const isNegativeWords = data?.negative.length > 0;
 
