@@ -24,7 +24,7 @@ const StyledTitle = styled(Title)`
   margin: ${spaces[2]} 0 ${spaces[2]};
 `;
 
-Empty.PropTypes = {
+Empty.Proptypes = {
   /** Title for empty component */
   title: PropTypes.string.isRequired,
   /** Description for empty component */
