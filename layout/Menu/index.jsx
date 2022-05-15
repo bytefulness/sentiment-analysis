@@ -23,12 +23,14 @@ const Menu = ({ menus }) => {
 };
 
 const StyledMenu = styled.aside`
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-right: 1px solid ${colors.grayPalette[300]};
   padding: ${spaces[8]};
-  min-height: 100vh;
+  height: 100vh;
 
   .avatar {
     margin: 0 auto;
