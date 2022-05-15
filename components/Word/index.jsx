@@ -21,7 +21,7 @@ const StyledWord = styled.article`
 
 Word.propTypes = {
   /** Status of Word. It gives color based on that status*/
-  isPositive: PropTypes.bool.isRequired,
+  isPositive: PropTypes.bool,
   children: PropTypes.string.isRequired,
 };
 
