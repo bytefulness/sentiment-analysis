@@ -11,11 +11,12 @@ const statusCards = {
     description: "Sentiment analysis of phare",
     positive: "Positive 😊",
     negative: "Negative 😔",
+    neutral: "Neutral 😐",
   },
 
   score: {
     title: "Score",
-    description: "Score of phare",
+    description: "Comparative Score of phare",
   },
 
   positiveWords: {
