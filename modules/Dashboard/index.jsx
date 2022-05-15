@@ -26,6 +26,9 @@ const Dashboard = () => {
 
   const isPositiveWords = data?.positive.length > 0;
   const isNegativeWords = data?.negative.length > 0;
+  const positiveWords = [...new Set(data?.positive)];
+  const negativeWords = [...new Set(data?.negative)];
+  const comparativeScore = data?.comparative.toFixed(2);
 
   const handleAnalyze = () => {
     const result = sentiment.analyze(inputValue);
@@ -39,7 +42,8 @@ const Dashboard = () => {
   };
 
   const checkPhareScore = (score) => {
-    if (score > 0.5) return statusCards.sentiment.positive;
+    if (score > 0) return statusCards.sentiment.positive;
+    if (score === 0) return statusCards.sentiment.neutral;
     return statusCards.sentiment.negative;
   };
 
@@ -75,14 +79,14 @@ const Dashboard = () => {
                 color="#FFEEE2"
                 title={statusCards.sentiment.title}
                 description={statusCards.sentiment.description}
-                value={checkPhareScore(data.score)}
+                value={checkPhareScore(data.comparative)}
               />
 
               <StatusCard
                 color="#EEFCEF"
                 title={statusCards.score.title}
                 description={statusCards.score.description}
-                value={data.score}
+                value={comparativeScore}
               />
 
               <StatusCard
@@ -106,13 +110,13 @@ const Dashboard = () => {
               </StyledTitle>
               <Words>
                 {isPositiveWords ? (
-                  data.positive.map((word, index) => (
+                  positiveWords.map((word, index) => (
                     <Word key={`positiveWord${index}`} isPositive>
                       {word}
                     </Word>
                   ))
                 ) : (
-                  <Text variant="sm">There is no positive words</Text>
+                  <Text variant="sm">-</Text>
                 )}
               </Words>
 
@@ -121,11 +125,11 @@ const Dashboard = () => {
               </StyledTitle>
               <Words>
                 {isNegativeWords ? (
-                  data.negative.map((word, index) => (
+                  negativeWords.map((word, index) => (
                     <Word key={`negativeWord${index}`}>{word}</Word>
                   ))
                 ) : (
-                  <Text variant="sm">There is no negative words</Text>
+                  <Text variant="sm">-</Text>
                 )}
               </Words>
             </WordsWrapper>
@@ -133,12 +137,25 @@ const Dashboard = () => {
         ) : (
           <Empty title={empty.title} description={empty.description} />
         )}
+
+        <Footer>
+          <Text>
+            This project developed by
+            <a href="https://akyel.dev/"> 🚀 ERHAN AKYEL </a>
+            as school project.
+          </Text>
+        </Footer>
       </Container>
     </>
   );
 };
 const Container = styled.div`
   max-width: 960px;
+
+  a {
+    color: #5151ce;
+    text-decoration: underline;
+  }
 `;
 
 const HeaderWrapper = styled.header`
@@ -176,6 +193,11 @@ const Words = styled.div`
   &:not(:last-child) {
     margin-bottom: ${spaces[10]};
   }
+`;
+
+const Footer = styled.footer`
+  margin-top: ${spaces[10]};
+  text-align: center;
 `;
 
 export default Dashboard;
