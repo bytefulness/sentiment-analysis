@@ -17,7 +17,7 @@ const StyledText = styled(Text)`
 `;
 
 Text.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   /** Define type of html element */
   as: PropTypes.oneOf(["p", "span"]),
 
