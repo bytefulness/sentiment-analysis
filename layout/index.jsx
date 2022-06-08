@@ -13,8 +13,10 @@ const Layout = ({ children }) => {
 };
 
 const Main = styled.main`
-  display: grid;
-  grid-template-columns: 300px 1fr;
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+  }
 `;
 
 const Content = styled.div`
